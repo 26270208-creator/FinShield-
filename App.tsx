@@ -3,17 +3,14 @@ import React, { useState } from 'react';
 export default function App() {
   const [activeTab, setActiveTab] = useState<'landing' | 'dti' | 'affordability' | 'fraud'>('landing');
 
-  // Состояния для калькулятора DTI
   const [monthlyIncome, setMonthlyIncome] = useState<string>('');
   const [monthlyDebt, setMonthlyDebt] = useState<string>('');
   const [dtiResult, setDtiResult] = useState<number | null>(null);
 
-  // Состояния для калькулятора доступности
   const [salary, setSalary] = useState<string>('');
   const [termMonths, setTermMonths] = useState<string>('12');
   const [affordResult, setAffordResult] = useState<number | null>(null);
 
-  // Состояния для анализатора текстов
   const [fraudText, setFraudText] = useState<string>('');
   const [fraudAnalysis, setFraudAnalysis] = useState<{ risk: string; score: number; reasons: string[] } | null>(null);
 
@@ -44,7 +41,7 @@ export default function App() {
       score += 50;
       reasons.push('⚠️ Запрос конфиденциальных данных (пароли, коды из СМС)');
     }
-    if (textLower.includes('срочно') || textLower.includes('внимание')  || textLower.includes('заблокирован')) {
+    if (textLower.includes('срочно') || textLower.includes('внимание') || textLower.includes('заблокирован')) {
       score += 30;
       reasons.push('⚡ Создание искусственной паники и спешки');
     }
